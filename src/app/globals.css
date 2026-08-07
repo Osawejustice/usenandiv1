@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/*
+  Nandi design system
+  ------------------------------------------------------------
+  The palette in the brand doc maps almost 1:1 onto Tailwind's
+  stone / teal / amber ramps, so we alias semantic tokens on top
+  of them instead of inventing a parallel scale.
+
+  canvas  #FAFAF9   soft   #F5F5F4
+  ink     #0C0A09   charcoal #1C1917
+  brand   #0F766E (deep teal)
+  accent  #D97706 (warm amber)
+*/
+
+@theme {
+  --color-canvas: #fafaf9;
+  --color-soft: #f5f5f4;
+  --color-line: #e7e5e4;
+  --color-ink: #0c0a09;
+  --color-muted: #57534e;
+  --color-faint: #78716c;
+  --color-charcoal: #1c1917;
+
+  --color-brand: #0f766e;
+  --color-brand-dark: #115e59;
+  --color-brand-light: #14b8a6;
+  --color-brand-soft: #ccfbf1;
+
+  --color-accent: #d97706;
+  --color-accent-dark: #b45309;
+  --color-accent-soft: #fef3c7;
+
+  --color-live: #16a34a;
+  --color-live-soft: #dcfce7;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-stack), ui-monospace, SFMono-Regular, monospace;
+
+  --text-display: 4.25rem;
+  --text-display--line-height: 1.03;
+  --text-display--letter-spacing: -0.035em;
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* keeps sticky nav from covering anchored sections */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible, consistent keyboard focus across the whole page. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 0.375rem;
+  }
+
+  /* Deep teal disappears against charcoal, so dark bands opt into the
+     lighter teal for a focus ring that stays visible. */
+  .on-dark :focus-visible {
+    outline-color: var(--color-brand-light);
+  }
+
+  ::selection {
+    background-color: var(--color-brand-soft);
+    color: var(--color-brand-dark);
+  }
+}
+
+@layer utilities {
+  /* Tight optical tracking for large display type. */
+  .text-balance-tight {
+    text-wrap: balance;
+  }
+
+  .text-pretty-body {
+    text-wrap: pretty;
+  }
+
+  /* Restrained African-inspired ambient wash used behind the hero
+     and the final conversion band. Kept very low contrast. */
+  .ambient-warm {
+    background-image:
+      radial-gradient(
+        62rem 34rem at 18% -10%,
+        color-mix(in oklab, var(--color-brand) 14%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        48rem 30rem at 88% 4%,
+        color-mix(in oklab, var(--color-accent) 12%, transparent),
+        transparent 72%
+      );
+  }
+
+  .ambient-dark {
+    background-image:
+      radial-gradient(
+        56rem 32rem at 12% 0%,
+        color-mix(in oklab, var(--color-brand-light) 18%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        44rem 28rem at 92% 100%,
+        color-mix(in oklab, var(--color-accent) 14%, transparent),
+        transparent 72%
+      );
+  }
+
+  /* Faint woven grid, a nod to textile patterning without shouting. */
+  .weave {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--color-ink) 5%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-ink) 5%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 3.5rem 3.5rem;
+  }
+
+  .shadow-lift {
+    box-shadow:
+      0 1px 2px color-mix(in oklab, var(--color-ink) 6%, transparent),
+      0 12px 28px -12px color-mix(in oklab, var(--color-ink) 18%, transparent);
+  }
+
+  .shadow-float {
+    box-shadow:
+      0 2px 4px color-mix(in oklab, var(--color-ink) 5%, transparent),
+      0 30px 60px -24px color-mix(in oklab, var(--color-ink) 28%, transparent);
+  }
+}
+
+/* Respect users who prefer less motion: neutralise transitions and
+   the looping "live" animations. Framer Motion reads this too. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
