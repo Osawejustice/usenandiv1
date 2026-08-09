@@ -1,26 +1,26 @@
-import { CodeIcon, LayersIcon, XIcon } from "@/components/ui/icons";
+import { HeadsetIcon, InboxIcon, XIcon } from "@/components/ui/icons";
 import { Reveal } from "@/components/ui/reveal";
 import { Container, Section, SectionHeading } from "@/components/ui/section";
 
 const pains = [
   {
-    Icon: CodeIcon,
-    kicker: "Pure API platforms",
-    title: "Powerful, but built for terminals — not teams",
+    Icon: HeadsetIcon,
+    kicker: "Sales dialers",
+    title: "Great at outbound calls, blind to everything else",
     points: [
-      "Steep learning curve for non-technical staff",
-      "No real Team Inbox out of the box",
-      "Support agents end up back in WhatsApp Web",
+      "Support conversations live in a separate tool",
+      "No shared history when the customer messages instead",
+      "WhatsApp and SMS bolted on, if they exist at all",
     ],
   },
   {
-    Icon: LayersIcon,
-    kicker: "Global enterprise tools",
-    title: "Feature-rich, but priced and shaped for elsewhere",
+    Icon: InboxIcon,
+    kicker: "Support inboxes",
+    title: "Good at chat, but voice is an afterthought",
     points: [
-      "Expensive, with dollar billing and long contracts",
-      "Complex setup before the first message goes out",
-      "No local payment rails or support mindset",
+      "No real softphone, so agents fall back to mobile phones",
+      "No departments, queues or IVR for a telesales floor",
+      "Calls never make it onto the customer record",
     ],
   },
 ];
@@ -32,8 +32,8 @@ export function ProblemSolution() {
         <SectionHeading
           id="problem-title"
           eyebrow="The gap"
-          title="The current options fall short."
-          lede="African teams are stuck choosing between raw APIs their support staff can't use, and global platforms that were never priced for this market."
+          title="You shouldn't have to pick a side."
+          lede="Most teams end up running a dialer for sales and an inbox for support — two tools, two histories, and a customer who has to explain themselves twice."
         />
 
         <div className="mt-14 grid gap-5 md:grid-cols-2">
@@ -77,10 +77,10 @@ export function ProblemSolution() {
               className="ambient-dark absolute inset-0 opacity-40"
             />
             <p className="relative text-lg leading-relaxed text-white sm:text-xl">
-              Nandi sits in the gap — a{" "}
-              <span className="font-semibold">UI-first platform</span> that
-              developers respect and business teams actually enjoy using every
-              day.
+              Nandi runs both — one{" "}
+              <span className="font-semibold">Cloud Contact Center</span> where
+              sales and support share the same customer, the same history and
+              the same tools.
             </p>
           </div>
         </Reveal>

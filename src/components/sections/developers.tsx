@@ -6,9 +6,9 @@ import { Container, Eyebrow, Section } from "@/components/ui/section";
 const wins = [
   "REST API with a full OpenAPI spec",
   "API keys with scopes, per-key rate limits",
-  "Signed webhooks for message, call and conversation events",
+  "Signed webhooks for call, message and conversation events",
   "Idempotency keys on every write",
-  "Predictable errors and delivery state machines",
+  "Predictable errors and call/delivery state machines",
 ];
 
 /**
@@ -100,12 +100,12 @@ export function Developers() {
                 id="developers-title"
                 className="text-balance-tight text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.5rem]"
               >
-                Powerful under the hood. Clean on the surface.
+                Clean APIs for when you&apos;re ready to go further.
               </h2>
               <p className="text-pretty-body mt-5 text-lg leading-relaxed text-white/70">
-                The dashboard is what your ops team sees. This is what your
-                engineers get: a small, predictable API surface with the
-                primitives you&apos;d build yourself if you had the time.
+                Your team runs the contact center from the dashboard. When you
+                want to build on top of it — trigger calls, sync conversations,
+                react to events — the same platform is a small, predictable API.
               </p>
 
               <ul className="mt-8 space-y-3">

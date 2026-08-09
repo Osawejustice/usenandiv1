@@ -20,7 +20,7 @@ const cards: ChannelCard[] = [
       "Automatic opt-out handling",
     ],
     whyItMatters:
-      "Still the only channel that reaches every phone in Nigeria, on any network, without an app.",
+      "Still the only channel that reaches every phone, on any network, without an app.",
   },
   {
     key: "whatsapp",
@@ -35,14 +35,14 @@ const cards: ChannelCard[] = [
   },
   {
     key: "voice",
-    tagline: "Outbound calls with basic IVR",
+    tagline: "Softphone, IVR and department routing",
     capabilities: [
-      "Outbound call initiation from dashboard or API",
-      "Call recording and status tracking",
-      "Simple IVR and call flows",
+      "Inbound and outbound calls from the browser or mobile app",
+      "Call recording, playback and status tracking",
+      "IVR menus that route to Sales, Support or Inquiries",
     ],
     whyItMatters:
-      "Some conversations need a voice. Every call is logged in the same thread as the messages.",
+      "This is where most contact center work still happens. Every call is logged on the same customer as the messages.",
   },
   {
     key: "telegram",
@@ -64,8 +64,8 @@ export function Channels() {
         <SectionHeading
           id="channels-title"
           eyebrow="Channels"
-          title="Four channels. One conversation history."
-          lede="Add a channel and it shows up in the same Team Inbox, on the same contact, with the same statuses your team already knows."
+          title="Voice first. Messaging in the same place."
+          lede="Add a channel and it shows up in the same Team Inbox, on the same contact, with the same statuses and departments your team already uses."
         />
 
         <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2">
@@ -119,7 +119,7 @@ export function Channels() {
         <Reveal delay={0.12}>
           <p className="mx-auto mt-8 flex max-w-xl items-center justify-center gap-2.5 rounded-full border border-line bg-white px-5 py-3 text-center text-sm text-muted">
             <InboxIcon className="h-4 w-4 shrink-0 text-brand" />
-            Whatever the channel, it all lands in the same Team Inbox.
+            Whatever the channel, it lands on the same customer timeline.
           </p>
         </Reveal>
       </Container>

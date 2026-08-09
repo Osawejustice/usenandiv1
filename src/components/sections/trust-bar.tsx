@@ -6,25 +6,25 @@ import { Container } from "@/components/ui/section";
  * names to show — the layout is built to take a logo strip without changes.
  */
 const stats = [
-  { value: "4", label: "Channels in one inbox" },
-  { value: "< 12 min", label: "Signup to first message" },
+  { value: "3", label: "Departments out of the box" },
+  { value: "< 12 min", label: "Signup to first conversation" },
   { value: "₦0", label: "Setup fees, ever" },
-  { value: "99.9%", label: "Delivery pipeline target" },
+  { value: "99.9%", label: "Call & delivery pipeline target" },
 ];
 
 export function TrustBar() {
   return (
     <section
-      aria-label="Built for Nigerian businesses"
+      aria-label="Why teams choose Nandi"
       className="border-y border-line bg-soft/50"
     >
       <Container>
         <div className="py-10 sm:py-12">
           <Reveal>
             <p className="text-center text-sm font-medium text-muted">
-              Built for Nigerian businesses ·{" "}
+              Built for sales and support teams ·{" "}
               <span className="text-faint">
-                Early access, with growing teams across Lagos, Abuja &amp; beyond
+                Early access, with growing teams onboarding now
               </span>
             </p>
           </Reveal>

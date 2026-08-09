@@ -7,19 +7,20 @@ import { MenuIcon, NandiMark, NandiWordmark, XIcon } from "@/components/ui/icons
 import { Container } from "@/components/ui/section";
 
 const links = [
-  { label: "Features", href: "#features" },
-  { label: "Channels", href: "#channels" },
+  { label: "Contact center", href: "#departments" },
+  { label: "Softphone", href: "#voice" },
+  { label: "Team Inbox", href: "#team-inbox" },
+  { label: "AI", href: "#ai" },
   { label: "Pricing", href: "#pricing" },
   { label: "Developers", href: "#developers" },
-  { label: "Docs", href: "#developers" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Nav starts transparent over the hero wash, then gains a frosted surface
-  // once content scrolls beneath it.
+  // Nav starts transparent over the dark hero — where it renders in white —
+  // then gains a frosted light surface once content scrolls beneath it.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -50,7 +51,7 @@ export function Nav() {
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "border-b border-line/70 bg-canvas/85 backdrop-blur-xl"
-          : "border-b border-transparent"
+          : "on-dark border-b border-transparent"
       }`}
     >
       <Container>
@@ -61,7 +62,7 @@ export function Nav() {
             aria-label="Nandi home"
           >
             <NandiMark className="h-8 w-8" />
-            <NandiWordmark />
+            <NandiWordmark className={scrolled ? "text-ink" : "text-white"} />
           </Link>
 
           <nav aria-label="Main" className="hidden lg:block">
@@ -70,7 +71,11 @@ export function Nav() {
                 <li key={l.label}>
                   <Link
                     href={l.href}
-                    className="rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:bg-soft hover:text-ink"
+                    className={`rounded-full px-3.5 py-2 text-sm transition-colors ${
+                      scrolled
+                        ? "text-muted hover:bg-soft hover:text-ink"
+                        : "text-white/70 hover:bg-white/10 hover:text-white"
+                    }`}
                   >
                     {l.label}
                   </Link>
@@ -82,7 +87,11 @@ export function Nav() {
           <div className="flex items-center gap-2">
             <Link
               href="#top"
-              className="hidden rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-ink sm:block"
+              className={`hidden rounded-full px-3.5 py-2 text-sm transition-colors sm:block ${
+                scrolled
+                  ? "text-muted hover:text-ink"
+                  : "text-white/70 hover:text-white"
+              }`}
             >
               Log in
             </Link>
@@ -96,7 +105,11 @@ export function Nav() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-soft lg:hidden"
+              className={`flex h-10 w-10 items-center justify-center rounded-full transition-colors lg:hidden ${
+                scrolled
+                  ? "text-ink hover:bg-soft"
+                  : "text-white hover:bg-white/10"
+              }`}
             >
               {open ? (
                 <XIcon className="h-5 w-5" />

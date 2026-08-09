@@ -6,10 +6,11 @@ const columns = [
   {
     heading: "Product",
     links: [
+      { label: "Multi-department routing", href: "#departments" },
+      { label: "Softphone & voice", href: "#voice" },
       { label: "Team Inbox", href: "#team-inbox" },
+      { label: "AI & agent assist", href: "#ai" },
       { label: "Channels", href: "#channels" },
-      { label: "Campaigns", href: "#features" },
-      { label: "Bots", href: "#features" },
       { label: "Pricing", href: "#pricing" },
     ],
   },
@@ -53,7 +54,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-muted">
-              The Cloud Communications Platform built for African businesses.
+              The Cloud Contact Center for modern sales and support teams.
             </p>
             <p className="mt-4 text-sm text-faint">
               Support:{" "}
@@ -91,9 +92,7 @@ export function Footer() {
           <p className="text-sm text-faint">
             © {new Date().getFullYear()} Nandi. All rights reserved.
           </p>
-          <p className="text-sm text-faint">
-            Made with care in Lagos 🇳🇬
-          </p>
+          <p className="text-sm text-faint">Made with care for growing teams</p>
         </div>
       </Container>
     </footer>

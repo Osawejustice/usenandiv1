@@ -19,34 +19,37 @@ const siteUrl = "https://usenandi.co";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Nandi — One beautiful inbox for SMS, WhatsApp, Voice & Telegram",
+    default:
+      "Nandi — Run sales and support from one intelligent contact center",
     template: "%s · Nandi",
   },
   description:
-    "Nandi is the modern Cloud Communications Platform built for African businesses. SMS, WhatsApp, Voice, Telegram and intelligent bots, with transparent Naira pricing and a Team Inbox your whole team will actually love.",
+    "Nandi is a modern Cloud Contact Center. Give your team a softphone, multi-department routing, shared customer history across WhatsApp, SMS, Voice and Telegram, and AI that actually helps.",
   keywords: [
-    "CPaaS",
+    "Cloud Contact Center",
+    "CCaaS",
+    "softphone",
+    "IVR and call routing",
+    "telesales software",
     "Team Inbox",
     "WhatsApp Business API",
-    "Bulk SMS Nigeria",
-    "Telegram bot",
-    "Voice API Africa",
-    "Naira pricing",
+    "omnichannel support",
   ],
   openGraph: {
     type: "website",
     url: siteUrl,
     siteName: "Nandi",
-    title: "Talk to your customers across every channel — from one beautiful inbox.",
+    title:
+      "Run sales and support from one intelligent contact center.",
     description:
-      "The modern Cloud Communications Platform built for African businesses. SMS, WhatsApp, Voice, Telegram and bots with transparent Naira pricing.",
-    locale: "en_NG",
+      "Softphone, multi-department routing, shared customer history and AI that helps — in one Cloud Contact Center.",
+    locale: "en",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nandi — Cloud Communications for African businesses",
+    title: "Nandi — The modern Cloud Contact Center",
     description:
-      "SMS, WhatsApp, Voice, Telegram and bots in one Team Inbox. Transparent Naira pricing.",
+      "Softphone, multi-department routing, one Team Inbox for WhatsApp, SMS, Voice and Telegram. Transparent pricing.",
   },
   alternates: { canonical: siteUrl },
 };
@@ -56,7 +59,17 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${mono.variable} antialiased`}>
+      {/*
+        Browser extensions (Grammarly, password managers) inject attributes
+        into <body> before React hydrates, which trips a hydration mismatch
+        that has nothing to do with our markup. This suppresses the warning
+        for this element's own attributes only — it does not extend to
+        children, so genuine mismatches inside the page still surface.
+      */}
+      <body
+        className={`${inter.variable} ${mono.variable} antialiased`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

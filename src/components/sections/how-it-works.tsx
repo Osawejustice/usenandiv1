@@ -11,25 +11,25 @@ const steps = [
   },
   {
     n: "02",
-    title: "Connect channels & import contacts",
-    body: "Turn on SMS, WhatsApp, Voice or Telegram, then bring your contacts in with a CSV. Tags come along for the ride.",
+    title: "Set up departments & invite your agents",
+    body: "Create Sales, Support and Inquiries, point your IVR at them, and invite the agents who'll answer each queue.",
   },
   {
     n: "03",
-    title: "Send your first message or activate a bot",
-    body: "Fire a single message, launch a campaign, or switch on a bot — and watch it land in the Team Inbox.",
+    title: "Take your first call or message",
+    body: "Open the softphone, add WhatsApp or SMS, and watch every conversation land in the Team Inbox on one customer timeline.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section labelledBy="how-title">
+    <Section id="how-it-works" labelledBy="how-title">
       <Container>
         <SectionHeading
           id="how-title"
           eyebrow="How it works"
           title="Three steps to your first conversation."
-          lede="No onboarding project, no integration sprint. Set it up between meetings."
+          lede="No onboarding project, no integration sprint, no hardware. Set it up between meetings."
         />
 
         <div className="relative mt-14">
@@ -84,11 +84,11 @@ export function HowItWorks() {
                   First conversation
                 </p>
                 <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
-                  <ChannelChip channel="whatsapp" />
+                  <ChannelChip channel="voice" />
                   <StatusPill status="Open" />
                 </div>
                 <p className="mt-2.5 font-mono text-[0.6875rem] text-muted">
-                  DELIVERED · ₦18.50 debited
+                  SALES · 02:14 · recorded
                 </p>
               </div>
             </div>

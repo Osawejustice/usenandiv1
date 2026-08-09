@@ -61,6 +61,21 @@ handoff moment on purpose, since that's the core differentiator.
 Mockups are `aria-hidden` with a `sr-only` text summary alongside, so screen
 readers get one useful description instead of dozens of meaningless fragments.
 
+**The mock is container-query driven, and must stay that way.** It renders in
+two very different widths — full-bleed in the hero (~1088px) and in a half
+column in the deep dive (~593px) — so its panels respond to their own box via
+`@container`, not to the viewport. The width budget:
+
+| Panel               | Width | Shows at |
+| ------------------- | ----- | -------- |
+| Icon rail           | 56px  | `@3xl`   |
+| Conversation list   | 248px | `@xl`    |
+| Customer sidebar    | 216px | `@5xl`   |
+
+Using viewport breakpoints (`lg:`, `xl:`) here is the bug that was already
+fixed once: at an `xl` viewport the deep dive rendered 520px of fixed columns
+inside a 593px box, collapsing the message thread to one word per line.
+
 ## Accessibility
 
 - Semantic landmarks, one `h1`, sections labelled via `aria-labelledby`

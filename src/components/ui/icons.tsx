@@ -41,10 +41,18 @@ export function NandiMark({ className = "h-7 w-7" }: { className?: string }) {
   );
 }
 
-export function NandiWordmark({ className = "" }: { className?: string }) {
+/**
+ * Colour is left to the caller (defaulting to ink) so the wordmark can sit on
+ * the dark hero without fighting a hardcoded class.
+ */
+export function NandiWordmark({
+  className = "text-ink",
+}: {
+  className?: string;
+}) {
   return (
     <span
-      className={`text-[1.35rem] font-semibold tracking-[-0.03em] text-ink ${className}`}
+      className={`text-[1.35rem] font-semibold tracking-[-0.03em] ${className}`}
     >
       Nandi
     </span>
@@ -209,6 +217,92 @@ export function BoltIcon(props: IconProps) {
   return (
     <Svg {...props}>
       <path d="M13.5 3 6 13.5h4.5L10 21l7.5-10.5H13Z" {...stroke} />
+    </Svg>
+  );
+}
+
+/* ---------- Contact center glyphs ---------- */
+
+export function HeadsetIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M4.5 13.5v-1.5a7.5 7.5 0 0 1 15 0v1.5" {...stroke} />
+      <rect x="2.8" y="13" width="4" height="6" rx="1.8" {...stroke} />
+      <rect x="17.2" y="13" width="4" height="6" rx="1.8" {...stroke} />
+      <path d="M19.2 19v.6a2.4 2.4 0 0 1-2.4 2.4H13" {...stroke} />
+    </Svg>
+  );
+}
+
+/** Org chart: one entry point branching into three departments. */
+export function DepartmentsIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="9" y="3" width="6" height="4.5" rx="1.4" {...stroke} />
+      <path d="M12 7.5v3M4.5 13.5v-1a1 1 0 0 1 1-1h13a1 1 0 0 1 1 1v1" {...stroke} />
+      <rect x="2.5" y="14" width="4.5" height="4" rx="1.2" {...stroke} />
+      <rect x="9.75" y="14" width="4.5" height="4" rx="1.2" {...stroke} />
+      <rect x="17" y="14" width="4.5" height="4" rx="1.2" {...stroke} />
+    </Svg>
+  );
+}
+
+export function SparkleIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M12 3.5 13.6 8 18 9.6 13.6 11.2 12 15.7 10.4 11.2 6 9.6 10.4 8Z" {...stroke} />
+      <path d="M18 15.5l.7 1.9 1.8.7-1.8.7-.7 1.9-.7-1.9-1.8-.7 1.8-.7Z" {...stroke} />
+    </Svg>
+  );
+}
+
+export function RecordIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="8.5" {...stroke} />
+      <circle cx="12" cy="12" r="3.2" fill="currentColor" stroke="none" />
+    </Svg>
+  );
+}
+
+/** Branching call flow, used for the IVR feature. */
+export function FlowIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="8.5" y="3" width="7" height="4" rx="1.3" {...stroke} />
+      <path d="M12 7v3.5M6 17v-3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v3" {...stroke} />
+      <rect x="3" y="17" width="6" height="4" rx="1.3" {...stroke} />
+      <rect x="15" y="17" width="6" height="4" rx="1.3" {...stroke} />
+    </Svg>
+  );
+}
+
+export function UsersIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="9" cy="8.5" r="3.2" {...stroke} />
+      <path d="M3.5 19.5a5.5 5.5 0 0 1 11 0" {...stroke} />
+      <path d="M15.5 6.2a3.2 3.2 0 0 1 0 6.1M17 14.6a5.5 5.5 0 0 1 3.5 4.9" {...stroke} />
+    </Svg>
+  );
+}
+
+export function ClockIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <circle cx="12" cy="12" r="8.5" {...stroke} />
+      <path d="M12 7.5V12l3 1.8" {...stroke} />
+    </Svg>
+  );
+}
+
+export function TimelineIcon(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M6 4v16" {...stroke} />
+      <circle cx="6" cy="8" r="1.9" {...stroke} />
+      <circle cx="6" cy="16" r="1.9" {...stroke} />
+      <path d="M10.5 8H19M10.5 16H19" {...stroke} />
     </Svg>
   );
 }

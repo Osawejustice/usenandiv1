@@ -89,8 +89,8 @@
     text-wrap: pretty;
   }
 
-  /* Restrained African-inspired ambient wash used behind the hero
-     and the final conversion band. Kept very low contrast. */
+  /* Restrained ambient wash used behind the hero and the final
+     conversion band. Kept very low contrast. */
   .ambient-warm {
     background-image:
       radial-gradient(
@@ -145,6 +145,213 @@
     box-shadow:
       0 2px 4px color-mix(in oklab, var(--color-ink) 5%, transparent),
       0 30px 60px -24px color-mix(in oklab, var(--color-ink) 28%, transparent);
+  }
+
+  /* ---------- Decorative motion ----------
+     Everything below is behind `aria-hidden` decoration. The
+     prefers-reduced-motion block at the bottom of this file neutralises all
+     of it, so each utility can assume motion is welcome. */
+
+  /* Soft colour field used behind the hero and dark conversion bands. */
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(64px);
+    will-change: transform;
+  }
+
+  .animate-drift {
+    animation: nandi-drift 24s ease-in-out infinite;
+  }
+
+  /* Same path, reversed and slower, so two blobs never move in lockstep. */
+  .animate-drift-alt {
+    animation: nandi-drift 30s ease-in-out infinite reverse;
+  }
+
+  /* Dotted field: lighter than `.weave`, used where a grid would feel heavy. */
+  .dot-grid {
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--color-ink) 12%, transparent) 1px,
+      transparent 1px
+    );
+    background-size: 1.5rem 1.5rem;
+  }
+
+  /* Live audio bars in the softphone. Height comes from a scaleY transform so
+     the browser can keep it on the compositor. */
+  .wave-bar {
+    transform-origin: center;
+    animation: nandi-wave 1.05s ease-in-out infinite;
+  }
+
+  /* Dashes travelling along a routing lane. `currentColor` lets each lane
+     inherit its own tint. */
+  .flow-track {
+    background-image: repeating-linear-gradient(
+      to right,
+      currentColor 0 0.25rem,
+      transparent 0.25rem 0.625rem
+    );
+    background-size: 0.625rem 100%;
+    animation: nandi-flow 0.9s linear infinite;
+  }
+
+  .halo {
+    background: conic-gradient(
+      from 210deg,
+      transparent 0deg,
+      color-mix(in oklab, var(--color-brand) 30%, transparent) 90deg,
+      color-mix(in oklab, var(--color-accent) 26%, transparent) 200deg,
+      transparent 320deg
+    );
+    animation: nandi-spin 26s linear infinite;
+  }
+
+  .animate-ring-out {
+    animation: nandi-ring-out 3s ease-out infinite;
+  }
+
+  /* Travelling dashes along an SVG routing path. Pair with
+     vector-effect="non-scaling-stroke" so the dashes keep their size when the
+     viewBox is stretched to fit its column. */
+  .flow-dash {
+    stroke-dasharray: 5 9;
+    animation: nandi-dash 1.1s linear infinite;
+  }
+
+  /* ---------- Dark hero treatment ----------
+     The hero is the one deliberately saturated surface on the page. It is
+     built from four cheap layers stacked on a charcoal base: an aurora mesh,
+     a grid that fades out, film grain, and a top spotlight. Together they
+     give depth that a flat gradient can't. */
+
+  .aurora {
+    background-image:
+      radial-gradient(
+        44rem 30rem at 12% 8%,
+        color-mix(in oklab, var(--color-brand-light) 42%, transparent),
+        transparent 62%
+      ),
+      radial-gradient(
+        38rem 26rem at 82% 0%,
+        color-mix(in oklab, var(--color-accent) 34%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        50rem 34rem at 68% 88%,
+        color-mix(in oklab, var(--color-brand) 52%, transparent),
+        transparent 66%
+      ),
+      radial-gradient(
+        30rem 24rem at 30% 100%,
+        color-mix(in oklab, #7c3aed 26%, transparent),
+        transparent 64%
+      );
+    animation: nandi-aurora 22s ease-in-out infinite alternate;
+  }
+
+  /* Perspective grid that dissolves toward the edges. */
+  .grid-fade {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.07) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    mask-image: radial-gradient(70% 60% at 50% 40%, black, transparent 100%);
+  }
+
+  /* Film grain. Inline SVG turbulence keeps this to zero extra requests. */
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  }
+
+  .spotlight {
+    background-image: radial-gradient(
+      42rem 26rem at 50% -6rem,
+      rgb(255 255 255 / 0.16),
+      transparent 70%
+    );
+  }
+
+  /* Frosted card used for pills and floating stats on the dark hero. */
+  .glass {
+    background-color: rgb(255 255 255 / 0.08);
+    border: 1px solid rgb(255 255 255 / 0.14);
+    backdrop-filter: blur(12px);
+  }
+
+  /* Warm-to-cool gradient text for the emphasised words in the headline. */
+  .text-gradient {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-brand-light),
+      #5eead4 38%,
+      #fcd34d 82%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes nandi-aurora {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(2%, 2%, 0) scale(1.15);
+  }
+}
+
+@keyframes nandi-dash {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+
+@keyframes nandi-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(4%, -5%, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-4%, 4%, 0) scale(0.94);
+  }
+}
+
+@keyframes nandi-wave {
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes nandi-flow {
+  to {
+    background-position: 0.625rem 0;
+  }
+}
+
+@keyframes nandi-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes nandi-ring-out {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
   }
 }
 

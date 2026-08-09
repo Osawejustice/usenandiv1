@@ -16,7 +16,7 @@ export type Conversation = {
 
 /**
  * Representative inbox contents. Names, numbers and message copy are written to
- * feel like a real Nigerian support queue rather than lorem ipsum.
+ * feel like a real support queue rather than lorem ipsum.
  */
 export const conversations: Conversation[] = [
   {
@@ -112,7 +112,7 @@ export const thread: ThreadItem[] = [
   {
     kind: "bot",
     channel: "whatsapp",
-    text: "Hi Amara! Order #NG-4471 left our Lagos hub this morning and is out for delivery.",
+    text: "Hi Amara! Order #NG-4471 left our warehouse this morning and is out for delivery.",
     time: "09:14",
   },
   {
@@ -129,7 +129,7 @@ export const thread: ThreadItem[] = [
   {
     kind: "note",
     author: "Ifeoma A.",
-    text: "Internal note: address change is fine, driver hasn't passed Yaba yet.",
+    text: "Internal note: address change is fine, the driver hasn't left the depot yet.",
     time: "09:16",
   },
   {
@@ -144,8 +144,8 @@ export const thread: ThreadItem[] = [
 export const customerPanel = {
   name: "Amara Okafor",
   phone: "+234 802 114 9930",
-  location: "Lagos, NG",
-  tags: ["VIP", "Repeat buyer", "Lagos"],
+  location: "Customer since 2023",
+  tags: ["VIP", "Repeat buyer", "Priority"],
   fields: [
     { label: "Lifetime orders", value: "14" },
     { label: "Last channel", value: "WhatsApp" },

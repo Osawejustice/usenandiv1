@@ -10,12 +10,12 @@ const capabilities = [
     body: "A customer who texts, then messages on WhatsApp, then calls is still one person with one history.",
   },
   {
-    title: "Assignment that's actually clear",
-    body: "Assign to an agent, filter by My Open, Unassigned or Mentions, and never wonder who's handling what.",
+    title: "The same workflow on every channel",
+    body: "Assignment, statuses and notes work identically for a call and a WhatsApp message — so your team stops switching tabs.",
   },
   {
-    title: "Internal notes and quick replies",
-    body: "Leave context for the next agent, and answer the questions you answer daily in one click.",
+    title: "Profile, tags and notes beside the thread",
+    body: "Customer details, internal notes and full history sit right next to the conversation, not three clicks away.",
   },
   {
     title: "Bot-to-human handoff, intact",
@@ -35,12 +35,12 @@ export function InboxDeepDive() {
                 id="inbox-title"
                 className="text-balance-tight text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] text-ink sm:text-[2.5rem]"
               >
-                The inbox your team will actually open every morning.
+                One inbox. Every channel.
               </h2>
               <p className="text-pretty-body mt-5 text-lg leading-relaxed text-muted">
-                Conversations from SMS, WhatsApp, Voice and Telegram land in one
-                real-time view — with the customer profile, tags and full
-                cross-channel history sitting right beside the thread.
+                WhatsApp, SMS, Voice and Telegram conversations land in a single
+                real-time view. Customer profile, tags, internal notes and full
+                history sit right beside the thread.
               </p>
 
               <ul className="mt-8 space-y-5">
@@ -61,7 +61,7 @@ export function InboxDeepDive() {
 
               <div className="mt-9">
                 <ButtonLink href="#get-started" size="lg">
-                  Explore the Inbox
+                  Explore the Team Inbox
                   <ArrowRight />
                 </ButtonLink>
               </div>

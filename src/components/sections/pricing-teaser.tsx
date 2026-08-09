@@ -7,15 +7,15 @@ const points = [
   "Prepaid wallet — you can never be surprised by a bill",
   "Real-time balance and a full usage ledger",
   "Cost estimation before every campaign send",
-  "Low-balance alerts before it becomes a problem",
+  "No per-agent seat trap as your team grows",
 ];
 
 /** Indicative rates. Keep in sync with the pricing page when it lands. */
 const rates = [
+  { channel: "Voice", price: "₦14.00", unit: "per minute" },
   { channel: "SMS", price: "₦3.20", unit: "per page" },
   { channel: "WhatsApp", price: "₦18.50", unit: "per conversation" },
   { channel: "Telegram", price: "₦0.00", unit: "free to send" },
-  { channel: "Voice", price: "₦14.00", unit: "per minute" },
 ];
 
 export function PricingTeaser() {
@@ -33,9 +33,9 @@ export function PricingTeaser() {
                 Simple, transparent, Naira-first.
               </h2>
               <p className="text-pretty-body mt-5 text-lg leading-relaxed text-muted">
-                Top up your wallet in Naira and spend it as you go. Every
-                message and call writes a transaction you can see, so you always
-                know exactly where your credit went.
+                Top up your wallet in Naira and spend it as you go. Every call
+                and message writes a transaction you can see, so you always know
+                exactly where your credit went.
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -83,7 +83,7 @@ export function PricingTeaser() {
 
               <div className="px-6 py-5">
                 <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.14em] text-faint">
-                  See costs before you send
+                  See costs before you call or send
                 </p>
                 <dl className="mt-3.5 space-y-2.5">
                   {rates.map((r) => (
@@ -107,7 +107,7 @@ export function PricingTeaser() {
 
               <p className="border-t border-line bg-soft/50 px-6 py-3.5 text-[0.8125rem] text-faint">
                 Indicative rates. Exact costs are shown in the dashboard before
-                every send.
+                every call and send.
               </p>
             </div>
           </Reveal>

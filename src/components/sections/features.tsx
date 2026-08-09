@@ -1,10 +1,10 @@
 import {
   BoltIcon,
   CodeIcon,
-  HandoffIcon,
-  InboxIcon,
-  LayersIcon,
-  ShieldIcon,
+  DepartmentsIcon,
+  HeadsetIcon,
+  SparkleIcon,
+  TimelineIcon,
   WalletIcon,
 } from "@/components/ui/icons";
 import { RevealGroup, RevealItem } from "@/components/ui/reveal";
@@ -12,34 +12,34 @@ import { Container, Section, SectionHeading } from "@/components/ui/section";
 
 const pillars = [
   {
-    Icon: InboxIcon,
-    title: "Team Inbox first",
-    body: "One unified view for SMS, WhatsApp, Voice and Telegram. Assignment, internal notes, statuses and full history — no tab-switching.",
+    Icon: DepartmentsIcon,
+    title: "Multi-department routing",
+    body: "Sales, Support and Inquiries each get their own numbers, IVR, queues and agents — without splitting your customer data.",
   },
   {
-    Icon: LayersIcon,
-    title: "Multi-channel by design",
-    body: "SMS, the official WhatsApp Business API, Voice and Telegram are all first-class citizens, not bolt-ons added later.",
+    Icon: HeadsetIcon,
+    title: "Softphone + call recording",
+    body: "Calling built into the browser and mobile app, with recording, playback and live agent availability included.",
   },
   {
-    Icon: HandoffIcon,
-    title: "Bots with clean handoff",
-    body: "Rule-based and conversational bots that answer the easy questions and escalate to a human without losing any context.",
+    Icon: TimelineIcon,
+    title: "Shared customer history",
+    body: "Voice, WhatsApp, SMS and Telegram all write to one timeline, so every agent sees the same customer.",
+  },
+  {
+    Icon: SparkleIcon,
+    title: "AI summaries and agent assist",
+    body: "Practical AI that summarises, suggests and analyses — while your agents keep the final word on every reply.",
   },
   {
     Icon: WalletIcon,
     title: "Transparent Naira pricing",
-    body: "A prepaid wallet with real-time balance and clear per-message costs. You see what a send will cost before you send it.",
+    body: "A prepaid wallet with real-time balance and clear per-minute and per-message costs. No dollar billing, no surprises.",
   },
   {
     Icon: CodeIcon,
-    title: "Developer experience",
-    body: "Clean REST APIs, signed webhooks, OpenAPI docs and idempotency keys. The integration your engineers won't complain about.",
-  },
-  {
-    Icon: ShieldIcon,
-    title: "Built for African reliability",
-    body: "Local payments through Paystack, a local support mindset, and delivery routes chosen because they actually work here.",
+    title: "Clean APIs when you're ready",
+    body: "Documented REST APIs, signed webhooks and idempotency keys for when you want to build on the platform.",
   },
 ];
 
@@ -50,8 +50,8 @@ export function Features() {
         <SectionHeading
           id="features-title"
           eyebrow="Core pillars"
-          title="Everything a growing team needs to run conversations."
-          lede="Six things we refuse to compromise on — because they're the difference between a platform your team tolerates and one they open every morning."
+          title="Everything a contact center team needs, in one place."
+          lede="Six things we refuse to compromise on — because they're the difference between a platform your agents tolerate and one they open every morning."
         />
 
         <RevealGroup className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -84,17 +84,17 @@ export function Features() {
           <RevealItem>
             <span className="inline-flex items-center gap-2">
               <BoltIcon className="h-4 w-4 text-accent" />
-              Real-time inbox updates
+              Real-time queues and inbox
             </span>
           </RevealItem>
           <RevealItem>
             <span>Open · Pending · Resolved · Closed</span>
           </RevealItem>
           <RevealItem>
-            <span>CSV contact import</span>
+            <span>Call recording and playback</span>
           </RevealItem>
           <RevealItem>
-            <span>Opt-out handling built in</span>
+            <span>CSV contact import</span>
           </RevealItem>
         </RevealGroup>
       </Container>
