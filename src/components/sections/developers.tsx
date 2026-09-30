@@ -27,10 +27,10 @@ function CodeSample() {
   return (
     <pre className="overflow-x-auto p-5 font-mono text-[0.8125rem] leading-relaxed text-white/80">
       <code>
-        <span className={c.comment}># Send a WhatsApp message</span>
+        <span className={c.comment}># Send a message on a connected channel</span>
         {"\n"}
         <span className={c.method}>curl</span> -X POST
-        https://api.usenandi.co/v1/messages \{"\n"}
+        https://api.nandi.to/v1/messages \{"\n"}
         {"  "}-H <span className={c.str}>
           &quot;Authorization: Bearer $NANDI_API_KEY&quot;
         </span>{" "}
@@ -78,7 +78,7 @@ function CodeSample() {
 const responseLines = [
   { label: "id", value: "\"msg_01J9F...\"" },
   { label: "status", value: "\"QUEUED\"" },
-  { label: "cost_ngn", value: "18.50" },
+  { label: "cost_usd", value: "0.05" },
   { label: "conversation_id", value: "\"cnv_7Kd2...\"" },
 ];
 
@@ -95,17 +95,17 @@ export function Developers() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <div>
-              <Eyebrow tone="onDark">For developers</Eyebrow>
-              <h2
+              <Eyebrow tone="onDark">Integrations</Eyebrow>
+              <h1
                 id="developers-title"
-                className="text-balance-tight text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.5rem]"
+                className="title text-[2rem] text-white sm:text-[2.75rem]"
               >
-                Clean APIs for when you&apos;re ready to go further.
-              </h2>
+                An API when you want to build on it.
+              </h1>
               <p className="text-pretty-body mt-5 text-lg leading-relaxed text-white/70">
-                Your team runs the contact center from the dashboard. When you
-                want to build on top of it — trigger calls, sync conversations,
-                react to events — the same platform is a small, predictable API.
+                The team runs Nandi from the dashboard. The same platform will
+                trigger a message, sign a webhook, and debit the wallet in one
+                write.
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -123,12 +123,12 @@ export function Developers() {
               </ul>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <ButtonLink href="#developers" variant="onDark" size="lg">
-                  Read the docs
+                <ButtonLink href="/get-started?intent=sales&plan=enterprise" size="lg">
+                  Get API keys
                   <ArrowRight />
                 </ButtonLink>
-                <ButtonLink href="#get-started" variant="onDarkGhost" size="lg">
-                  Get API keys
+                <ButtonLink href="/pricing" variant="onDarkGhost" size="lg">
+                  See pricing
                 </ButtonLink>
               </div>
             </div>

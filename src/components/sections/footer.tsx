@@ -1,49 +1,40 @@
 import Link from "next/link";
+import { products } from "@/content/products";
 import { NandiMark } from "@/components/ui/icons";
 import { Container } from "@/components/ui/section";
 
 const columns = [
   {
     heading: "Product",
-    links: [
-      { label: "Multi-department routing", href: "#departments" },
-      { label: "Softphone & voice", href: "#voice" },
-      { label: "Team Inbox", href: "#team-inbox" },
-      { label: "AI & agent assist", href: "#ai" },
-      { label: "Channels", href: "#channels" },
-      { label: "Pricing", href: "#pricing" },
-    ],
+    links: products.map((product) => ({ label: product.name, href: product.href })),
   },
   {
-    heading: "Developers",
+    heading: "Platform",
     links: [
-      { label: "Documentation", href: "#developers" },
-      { label: "API reference", href: "#developers" },
-      { label: "Webhooks", href: "#developers" },
-      { label: "Status", href: "#developers" },
+      { label: "Webhooks", href: "/developers" },
+      { label: "Pricing", href: "/pricing" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About", href: "#top" },
-      { label: "Careers", href: "#top" },
-      { label: "Contact", href: "#get-started" },
+      { label: "Scenarios", href: "/scenarios" },
+      { label: "Contact", href: "mailto:hello@usenandi.co" },
     ],
   },
   {
     heading: "Legal",
     links: [
-      { label: "Privacy", href: "#top" },
-      { label: "Terms", href: "#top" },
-      { label: "DPA", href: "#top" },
+      { label: "Privacy", href: "/#get-started" },
+      { label: "Terms", href: "/#get-started" },
+      { label: "DPA", href: "/#get-started" },
     ],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-line bg-canvas">
+    <footer className="border-t border-gold/40 bg-ivory">
       <Container>
         <div className="grid gap-10 py-14 sm:py-16 lg:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,1fr))]">
           <div>
@@ -54,10 +45,10 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-xs text-[0.9375rem] leading-relaxed text-muted">
-              The Cloud Contact Center for modern sales and support teams.
+              The conversational intelligence platform for a sales-focused team. Voice and a shared inbox.
             </p>
-            <p className="mt-4 text-sm text-faint">
-              Support:{" "}
+            <p className="mt-3 text-sm text-faint">nandi.to</p>
+            <p className="mt-3 text-sm text-faint">
               <a
                 href="mailto:hello@usenandi.co"
                 className="font-medium text-brand underline-offset-4 hover:underline"
@@ -67,19 +58,19 @@ export function Footer() {
             </p>
           </div>
 
-          {columns.map((col) => (
-            <nav key={col.heading} aria-label={col.heading}>
+          {columns.map((column) => (
+            <nav key={column.heading} aria-label={column.heading}>
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-faint">
-                {col.heading}
+                {column.heading}
               </p>
               <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => (
-                  <li key={l.label}>
+                {column.links.map((link) => (
+                  <li key={link.label}>
                     <Link
-                      href={l.href}
+                      href={link.href}
                       className="text-[0.9375rem] text-muted transition-colors hover:text-ink"
                     >
-                      {l.label}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -89,10 +80,8 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-4 border-t border-line py-7 sm:flex-row">
-          <p className="text-sm text-faint">
-            © {new Date().getFullYear()} Nandi. All rights reserved.
-          </p>
-          <p className="text-sm text-faint">Made with care for growing teams</p>
+          <p className="text-sm text-faint">© {new Date().getFullYear()} Nandi.</p>
+          <p className="text-sm text-faint">nandi.to</p>
         </div>
       </Container>
     </footer>

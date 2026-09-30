@@ -1,7 +1,7 @@
 # Nandi — Landing Page
 
-Marketing site for **Nandi**, the Cloud Communications Platform (CPaaS) built for
-African businesses. Built from the Landing Page Documentation v1.0 (August 2026).
+Marketing site for **Nandi**, the cloud contact center at nandi.to.
+Voice, messaging, and SMS on one customer timeline.
 
 Stack: Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Framer Motion
 
@@ -47,8 +47,11 @@ free" never competes with anything else on the page.
 
 ### Section order
 
-Nav → Hero → Trust bar → Problem/Solution → Core pillars → Team Inbox deep dive →
-Channels → Developers → How it works → Pricing teaser → Final CTA → Footer
+Homepage: Nav → Hero → Trust strip → Statement → Product modes → Product suite →
+Growth path → How it works → Pricing teaser → Final CTA → Footer
+
+Routes: `/products`, `/products/voice`, `/products/inbox`, `/products/channels`,
+`/products/assist`, `/products/agents`, `/products/api`, `/pricing`, `/developers`
 
 ## Product mockups
 

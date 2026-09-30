@@ -3,14 +3,12 @@
 /*
   Nandi design system
   ------------------------------------------------------------
-  The palette in the brand doc maps almost 1:1 onto Tailwind's
-  stone / teal / amber ramps, so we alias semantic tokens on top
-  of them instead of inventing a parallel scale.
-
-  canvas  #FAFAF9   soft   #F5F5F4
-  ink     #0C0A09   charcoal #1C1917
-  brand   #0F766E (deep teal)
-  accent  #D97706 (warm amber)
+  The page stays light. Color is a layer, not a theme:
+  each band takes one field from the brand book (ivory, mint,
+  sand, blush, lilac, plum) so the scroll reads as stacked color.
+  Teal is trust. Amber is the call to act. Red answers the green.
+  Plum, clay, and gold stay the brand-book pigments.
+  Charcoal is reserved for the developers page and product chrome.
 */
 
 @theme {
@@ -34,14 +32,29 @@
   --color-live: #16a34a;
   --color-live-soft: #dcfce7;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono-stack), ui-monospace, SFMono-Regular, monospace;
+  --color-plum: #3a264f;
+  --color-clay: #a66e4a;
+  --color-gold: #c89f59;
+  --color-ivory: #f4f0e6;
+  --color-red: #c44536;
+  --color-red-deep: #5c1e28;
+  --color-blush: #fbe8e3;
+  --color-lilac: #efe8f4;
+  --color-sand: #f6eadc;
+
+
 
   --text-display: 4.25rem;
   --text-display--line-height: 1.03;
   --text-display--letter-spacing: -0.035em;
 
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-sans-family), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif-family), "Iowan Old Style", Palatino, serif;
+  --font-mono: var(--font-mono-stack), ui-monospace, SFMono-Regular, monospace;
 }
 
 @layer base {
@@ -55,7 +68,7 @@
   body {
     background-color: var(--color-canvas);
     color: var(--color-ink);
-    font-family: var(--font-sans);
+    font-family: var(--font-sans-family), ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -74,8 +87,8 @@
   }
 
   ::selection {
-    background-color: var(--color-brand-soft);
-    color: var(--color-brand-dark);
+    background-color: color-mix(in oklab, var(--color-gold) 55%, transparent);
+    color: var(--color-charcoal);
   }
 }
 
@@ -291,6 +304,69 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  /* Headlines. A serif at book weight, the way a contact-center page should speak. */
+  .title {
+    font-family: var(--font-serif-family), "Iowan Old Style", Palatino, serif;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  /* Warm paper. Soft blooms of teal, plum, gold, and red — light enough to read on. */
+  .paper {
+    background-color: #f7f6f0;
+    background-image:
+      radial-gradient(
+        42rem 24rem at 88% -6%,
+        color-mix(in oklab, var(--color-brand) 24%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        28rem 20rem at 0% 108%,
+        color-mix(in oklab, var(--color-plum) 18%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        26rem 18rem at 72% 112%,
+        color-mix(in oklab, var(--color-gold) 36%, transparent),
+        transparent 72%
+      ),
+      radial-gradient(
+        18rem 14rem at 6% 18%,
+        color-mix(in oklab, var(--color-red) 14%, transparent),
+        transparent 70%
+      );
+  }
+
+  .hero-scene {
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 72%, transparent 100%);
+  }
+
+  /* Light product washes. Low chroma, so the UI stays the picture. */
+  .wash-mist {
+    background-image:
+      radial-gradient(
+        62rem 34rem at 50% -8%,
+        color-mix(in oklab, var(--color-brand) 11%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        36rem 24rem at 88% 12%,
+        color-mix(in oklab, #c4b5fd 14%, transparent),
+        transparent 70%
+      );
+  }
+
+  .wash-lilac {
+    background-image: radial-gradient(
+      42rem 28rem at 70% 40%,
+      color-mix(in oklab, #c4b5fd 16%, transparent),
+      transparent 72%
+    );
   }
 }
 

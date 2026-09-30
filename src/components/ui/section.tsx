@@ -83,7 +83,7 @@ export function SectionHeading({
       ) : null}
       <h2
         id={id}
-        className={`text-balance-tight text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] sm:text-[2.5rem] ${
+        className={`title text-[2rem] sm:text-[2.65rem] ${
           tone === "dark" ? "text-white" : "text-ink"
         }`}
       >

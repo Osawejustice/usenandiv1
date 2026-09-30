@@ -39,8 +39,8 @@ export function TeamInboxMock({ compact = false }: { compact?: boolean }) {
     // fixed-width columns overflow and crush the thread to one word per line.
     <div className="@container relative">
       <p className="sr-only">
-        A preview of the Nandi Team Inbox showing conversations from WhatsApp,
-        SMS, Telegram and Voice in one list, with statuses Open, Pending and
+        A preview of the Nandi Team Inbox showing conversations from voice,
+        messaging, and SMS in one list, with statuses Open, Pending and
         Resolved, agent assignment, internal notes, and a bot handing a
         conversation over to a human agent.
       </p>
@@ -57,7 +57,7 @@ export function TeamInboxMock({ compact = false }: { compact?: boolean }) {
             <span className="h-2.5 w-2.5 rounded-full bg-stone-300" />
           </div>
           <div className="mx-auto flex items-center gap-1.5 rounded-md bg-white px-3 py-1 text-[0.6875rem] text-faint ring-1 ring-line">
-            <span className="text-live">●</span> app.usenandi.co/inbox
+            <span className="text-live">●</span> app.nandi.to/inbox
           </div>
         </div>
 
@@ -220,7 +220,7 @@ export function TeamInboxMock({ compact = false }: { compact?: boolean }) {
             <div className="border-t border-line bg-white px-4 py-3">
               <div className="flex items-center gap-2 rounded-xl border border-line px-3 py-2">
                 <span className="text-[0.75rem] text-faint">
-                  Reply on WhatsApp…
+                  Reply in the thread…
                 </span>
                 <span className="ml-auto flex items-center gap-1.5">
                   <span className="rounded-md bg-soft px-1.5 py-0.5 text-[0.625rem] text-muted">
@@ -281,7 +281,7 @@ export function TeamInboxMock({ compact = false }: { compact?: boolean }) {
                 Wallet
               </p>
               <p className="mt-1 text-[0.9375rem] font-semibold text-ink">
-                ₦48,250.00
+                $1,250.00
               </p>
               <p className="text-[0.625rem] text-live">Balance healthy</p>
             </div>

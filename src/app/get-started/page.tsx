@@ -1,0 +1,56 @@
+import type { Metadata } from "next";
+import { StartForm } from "@/components/sections/start-form";
+import { Container } from "@/components/ui/section";
+import {
+  billingFromQuery,
+  planAmount,
+  planCadence,
+  planFromQuery,
+  plans,
+} from "@/content/pricing";
+
+export const metadata: Metadata = {
+  title: "Get started",
+  description:
+    "Tell Nandi who you are. Get started free, or talk to sales about Enterprise. We reply from hello@usenandi.co.",
+  alternates: { canonical: "https://nandi.to/get-started" },
+};
+
+export default async function GetStartedPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ intent?: string; plan?: string; billing?: string }>;
+}) {
+  const params = await searchParams;
+  const intent = params.intent === "sales" ? "sales" : "start";
+  const plan = planFromQuery(params.plan, intent === "sales" ? "enterprise" : "starter");
+  const billing = billingFromQuery(params.billing);
+  const sales = intent === "sales";
+  const chosen = plans.find((entry) => entry.id === plan) ?? plans[0];
+
+  return (
+    <main id="main" className="paper pb-20 pt-28 sm:pt-32">
+      <Container>
+        <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
+              {sales ? "Talk to sales" : "Get started"}
+            </p>
+            <h1 className="title mt-3 text-5xl text-ink sm:text-6xl">
+              {sales ? "Tell us about the floor." : "Open the contact center."}
+            </h1>
+            <p className="mt-5 max-w-md text-lg leading-relaxed text-muted">
+              {sales
+                ? "Send a note and a person replies from hello@usenandi.co. Enterprise is priced with you. Starter is free. Growth and SME keep the published platform fee, and airtime is separate."
+                : "Open the inbox free, or ask for a number. We reply from hello@usenandi.co. No card on this page."}
+            </p>
+            <p className="mt-4 text-sm text-faint">
+              Selected: {chosen.name}, {planAmount(chosen, billing)}, {planCadence(chosen.id, billing)}. You can change it in the form.
+            </p>
+          </div>
+          <StartForm intent={intent} plan={plan} billing={billing} />
+        </div>
+      </Container>
+    </main>
+  );
+}

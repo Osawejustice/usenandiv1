@@ -1,175 +1,117 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { HeroVisual } from "@/components/product/hero-visual";
+import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
+import { ProductArt } from "@/components/product/product-art";
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
-import {
-  DepartmentsIcon,
-  HeadsetIcon,
-  SparkleIcon,
-  TimelineIcon,
-} from "@/components/ui/icons";
 import { Container } from "@/components/ui/section";
+import type { ModeVisual } from "@/content/product-modes";
 
-const supporting = [
-  "No credit card required",
-  "Transparent prepaid pricing",
-  "Live in under 12 minutes",
-];
-
-/** The four capability anchors from the positioning doc, in priority order. */
-const anchors = [
-  { Icon: HeadsetIcon, label: "Softphone" },
-  { Icon: DepartmentsIcon, label: "Multi-department routing" },
-  { Icon: TimelineIcon, label: "Shared history" },
-  { Icon: SparkleIcon, label: "AI that helps" },
+const chips: { id: string; label: string; visual: ModeVisual }[] = [
+  { id: "hero-voice", label: "Voice", visual: "voice" },
+  { id: "hero-inbox", label: "Inbox", visual: "inbox" },
+  { id: "hero-assist", label: "Assist", visual: "assist" },
+  { id: "hero-agents", label: "Agents", visual: "inbox" },
 ];
 
 export function Hero() {
   const reduceMotion = useReducedMotion();
+  const [active, setActive] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const chip = chips[active];
 
-  const rise = (delay: number) =>
-    reduceMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 22 },
-          animate: { opacity: 1, y: 0 },
-          transition: {
-            duration: 0.75,
-            delay,
-            ease: [0.16, 1, 0.3, 1] as const,
-          },
-        };
+  useEffect(() => {
+    if (reduceMotion || paused) return;
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % chips.length);
+    }, 6000);
+    return () => window.clearInterval(timer);
+  }, [paused, reduceMotion]);
 
   return (
-    // The hero is the one saturated surface on the page — everything below it
-    // returns to the light canvas. `on-dark` switches focus rings to the
-    // lighter teal so they stay visible against charcoal.
-    <section
-      id="top"
-      className="on-dark relative overflow-hidden bg-charcoal pb-16 pt-24 sm:pb-20 lg:pb-20 lg:pt-28"
-    >
-      {/* ---------- Layered backdrop ----------
-          Aurora mesh → fading grid → spotlight → grain. Each layer is a cheap
-          CSS paint; together they give the depth a flat gradient can't. */}
-      <div aria-hidden="true" className="absolute inset-0">
-        <div className="aurora absolute inset-0 opacity-70" />
-        <div className="grid-fade absolute inset-0" />
-        <div className="spotlight absolute inset-0" />
-        <div className="grain absolute inset-0 opacity-[0.15] mix-blend-overlay" />
-        {/* Fade into the canvas colour so the next section doesn't hard-cut */}
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-canvas" />
-      </div>
-
-      <Container className="relative">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-10 xl:gap-14">
-          {/* ---------- Copy ---------- */}
-          <div className="text-center lg:text-left">
-            <motion.div {...rise(0)}>
-              <span className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium text-white/80">
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-live opacity-70" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-live" />
-                </span>
-                Cloud Contact Center · Voice, messaging &amp; AI
-              </span>
-            </motion.div>
-
-            {/* Exactly two lines from `sm` up. Each line is its own
-                non-wrapping block, so the type scale is sized to the narrower
-                column rather than trusting the browser to break in the right
-                place — that was what pushed the hero out of the viewport. */}
-            <motion.h1
-              className="mt-5 text-[2.125rem] font-semibold leading-[1.05] tracking-[-0.04em] text-white sm:text-[2.75rem] lg:text-[3.125rem] xl:text-[3.5rem]"
-              {...rise(0.08)}
-            >
-              <span className="block sm:whitespace-nowrap">
-                Every conversation.
-              </span>
-              <span className="text-gradient block sm:whitespace-nowrap">
-                One contact center.
-              </span>
-            </motion.h1>
-
-            <motion.p
-              className="text-pretty-body mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/65 sm:text-lg lg:mx-0"
-              {...rise(0.16)}
-            >
-              Nandi gives your team a softphone, multi-department routing and
-              shared customer history — so sales and support finally run in one
-              place.
-            </motion.p>
-
-            <motion.ul
-              className="mt-6 flex flex-wrap items-center justify-center gap-2 lg:justify-start"
-              {...rise(0.22)}
-            >
-              {anchors.map(({ Icon, label }) => (
-                <li key={label}>
-                  <span className="glass inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.8125rem] font-medium text-white/75">
-                    <Icon className="h-3.5 w-3.5 text-brand-light" />
-                    {label}
-                  </span>
-                </li>
-              ))}
-            </motion.ul>
-
-            <motion.div
-              className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start"
-              {...rise(0.28)}
-            >
-              <ButtonLink
-                href="#get-started"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                Get started free
-                <ArrowRight />
-              </ButtonLink>
-              <ButtonLink
-                href="#how-it-works"
-                variant="onDarkGhost"
-                size="lg"
-                className="w-full sm:w-auto"
-              >
-                See how it works
-              </ButtonLink>
-            </motion.div>
-
-            <motion.ul
-              className="mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-white/40 lg:justify-start"
-              {...rise(0.34)}
-            >
-              {supporting.map((item, i) => (
-                <li key={item} className="flex items-center gap-2">
-                  {i > 0 ? (
-                    <span aria-hidden="true" className="text-white/20">
-                      ·
-                    </span>
-                  ) : null}
-                  {item}
-                </li>
-              ))}
-            </motion.ul>
-          </div>
-
-          {/* ---------- Illustration ---------- */}
-          <motion.div
-            className="relative"
-            {...(reduceMotion
-              ? {}
-              : {
-                  initial: { opacity: 0, scale: 0.94, y: 28 },
-                  animate: { opacity: 1, scale: 1, y: 0 },
-                  transition: {
-                    duration: 1,
-                    delay: 0.2,
-                    ease: [0.16, 1, 0.3, 1] as const,
-                  },
-                })}
+    <section id="top" className="paper pb-14 pt-24 sm:pb-20 sm:pt-28">
+      <Container>
+        <div
+          className="relative mx-auto max-w-5xl"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
+          <div
+            role="tablist"
+            aria-label="Product preview"
+            className="mb-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
           >
-            <HeroVisual className="mx-auto max-w-sm lg:max-w-[25rem] xl:max-w-[27rem]" />
-          </motion.div>
+            {chips.map((item, index) => {
+              const selected = index === active;
+              return (
+                <button
+                  key={item.id}
+                  id={item.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  aria-controls="hero-panel"
+                  className={`border-b pb-1 text-sm transition-colors ${
+                    selected
+                      ? "border-brand font-medium text-brand-dark"
+                      : "border-transparent text-muted hover:text-ink"
+                  }`}
+                  onClick={() => setActive(index)}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
+          </div>
+          <div className="hero-scene">
+            <div
+              role="tabpanel"
+              id="hero-panel"
+              aria-labelledby={chip.id}
+              className="max-h-[16rem] overflow-hidden sm:max-h-[22rem]"
+            >
+              <ProductArt visual={chip.visual} />
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-2 max-w-3xl px-1 text-center">
+          <h1 className="title text-[clamp(2.15rem,4.6vw,4.15rem)] text-ink">
+            Every conversation.
+            <span className="block">One contact center.</span>
+          </h1>
+          <p className="text-pretty-body mx-auto mt-5 max-w-xl text-lg leading-relaxed text-muted">
+            Place the call or take it, on one number. AI reads the conversation beside your team, and can carry the call when the floor is empty.
+          </p>
+          <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <ButtonLink href="/get-started" size="lg" className="w-full sm:w-auto">
+              Get started free
+              <ArrowRight />
+            </ButtonLink>
+            <ButtonLink href="/get-started?intent=sales" variant="ghost" size="lg" className="w-full sm:w-auto">
+              Talk to sales
+            </ButtonLink>
+          </div>
+          <p className="mt-4 text-sm text-faint">
+            No credit card · Free inbox · Live in under 12 minutes
+          </p>
+          {chip.id === "hero-voice" ? (
+            <p className="mt-3 text-sm text-muted">
+              Outbound and inbound, from the browser or the Nandi phone. The minute is airtime.
+            </p>
+          ) : null}
+          {chip.id === "hero-assist" ? (
+            <p className="mt-3 text-sm text-muted">
+              Sentiment and a read of the conversation. The person still sends.
+            </p>
+          ) : null}
+          {chip.id === "hero-agents" ? (
+            <p className="mt-3 text-sm text-muted">
+              Labeled AI. It can place a call or receive one. The handoff includes the transcript.
+            </p>
+          ) : null}
         </div>
       </Container>
     </section>

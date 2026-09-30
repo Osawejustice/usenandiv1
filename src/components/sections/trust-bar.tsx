@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/section";
 const stats = [
   { value: "3", label: "Departments out of the box" },
   { value: "< 12 min", label: "Signup to first conversation" },
-  { value: "₦0", label: "Setup fees, ever" },
+  { value: "$0", label: "Setup fees, ever" },
   { value: "99.9%", label: "Call & delivery pipeline target" },
 ];
 
@@ -16,16 +16,13 @@ export function TrustBar() {
   return (
     <section
       aria-label="Why teams choose Nandi"
-      className="border-y border-line bg-soft/50"
+      className="border-y border-brand-light/20 bg-brand"
     >
       <Container>
         <div className="py-10 sm:py-12">
           <Reveal>
-            <p className="text-center text-sm font-medium text-muted">
-              Built for sales and support teams ·{" "}
-              <span className="text-faint">
-                Early access, with growing teams onboarding now
-              </span>
+            <p className="text-center text-sm font-medium text-ivory/80">
+              Built for sales and support teams. Early access.
             </p>
           </Reveal>
 
@@ -35,10 +32,10 @@ export function TrustBar() {
                 <div key={s.label} className="text-center">
                   <dt className="sr-only">{s.label}</dt>
                   <dd>
-                    <span className="block text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-[1.75rem]">
+                    <span className="title block text-3xl text-ivory sm:text-4xl">
                       {s.value}
                     </span>
-                    <span className="mt-1 block text-xs leading-snug text-faint">
+                    <span className="mt-1 block text-xs leading-snug text-ivory/75">
                       {s.label}
                     </span>
                   </dd>

@@ -6,24 +6,24 @@ import { Container, Section, SectionHeading } from "@/components/ui/section";
 const steps = [
   {
     n: "01",
-    title: "Create your organization & top up in Naira",
-    body: "Sign up, name your organization, and fund the prepaid wallet through Paystack. No sales call, no contract.",
+    title: "Open the workspace",
+    body: "Sign up free. Connect WhatsApp and Telegram. They are free services, and we do not charge. No card, and no platform fee.",
   },
   {
     n: "02",
-    title: "Set up departments & invite your agents",
-    body: "Create Sales, Support and Inquiries, point your IVR at them, and invite the agents who'll answer each queue.",
+    title: "Add a number when you need voice",
+    body: "Choose Growth or SME. The platform fee is monthly. Calls are airtime, kept off that fee.",
   },
   {
     n: "03",
-    title: "Take your first call or message",
-    body: "Open the softphone, add WhatsApp or SMS, and watch every conversation land in the Team Inbox on one customer timeline.",
+    title: "Take the first conversation",
+    body: "A message on a service you connected, or a call once the number is live. Airtime leaves the wallet.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <Section id="how-it-works" labelledBy="how-title">
+    <Section id="how-it-works" labelledBy="how-title" className="bg-blush">
       <Container>
         <SectionHeading
           id="how-title"
@@ -63,7 +63,7 @@ export function HowItWorks() {
           <div className="mt-14 overflow-hidden rounded-2xl border border-line bg-white shadow-lift">
             <div className="grid items-center gap-6 p-7 sm:p-9 md:grid-cols-[minmax(0,1fr)_auto]">
               <div className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent-dark">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-soft text-brand-dark">
                   <BoltIcon className="h-5 w-5" />
                 </span>
                 <div>

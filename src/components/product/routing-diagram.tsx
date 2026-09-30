@@ -1,4 +1,4 @@
-import { VoiceIcon, WhatsAppIcon } from "@/components/ui/icons";
+import { SmsIcon, VoiceIcon } from "@/components/ui/icons";
 
 type Department = {
   name: string;
@@ -84,8 +84,8 @@ export function RoutingDiagram({ className = "" }: { className?: string }) {
                 Inbound call · ringing
               </span>
               <span className="flex items-center gap-1.5 text-[0.6875rem] text-muted">
-                <WhatsAppIcon className="h-3.5 w-3.5 text-emerald-500" />
-                WhatsApp · new message
+                <SmsIcon className="h-3.5 w-3.5 text-emerald-500" />
+                Message · new
               </span>
             </div>
           </div>

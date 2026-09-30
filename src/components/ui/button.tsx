@@ -5,7 +5,7 @@ type Variant = "primary" | "secondary" | "ghost" | "onDark" | "onDarkGhost";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium " +
+  "inline-flex items-center justify-center gap-2 rounded-xl font-medium " +
   "transition-all duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] " +
   "active:translate-y-px whitespace-nowrap";
 
@@ -14,12 +14,13 @@ const variants: Record<Variant, string> = {
   primary:
     "bg-accent text-white shadow-lift hover:bg-accent-dark hover:-translate-y-0.5 hover:shadow-float",
   secondary:
-    "bg-white text-ink border border-line hover:border-brand/40 hover:text-brand hover:-translate-y-0.5 shadow-lift",
-  ghost: "text-ink hover:text-brand",
+    "border border-gold/50 bg-transparent text-ink hover:border-gold hover:bg-gold/10 hover:-translate-y-0.5",
+  ghost:
+    "border border-line bg-white text-ink hover:border-brand hover:bg-brand-soft/50 hover:-translate-y-0.5",
   onDark:
-    "bg-white text-charcoal hover:bg-brand-soft hover:-translate-y-0.5 shadow-lift",
+    "bg-gold text-charcoal hover:bg-ivory hover:-translate-y-0.5 shadow-lift",
   onDarkGhost:
-    "border border-white/25 text-white hover:border-white/60 hover:bg-white/5 hover:-translate-y-0.5",
+    "border border-ivory/35 text-ivory hover:border-gold hover:text-gold hover:-translate-y-0.5",
 };
 
 const sizes: Record<Size, string> = {

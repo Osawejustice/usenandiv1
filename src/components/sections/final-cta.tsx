@@ -1,5 +1,4 @@
 import { ArrowRight, ButtonLink } from "@/components/ui/button";
-import { ChannelChip } from "@/components/ui/channel";
 import { Reveal } from "@/components/ui/reveal";
 import { Container } from "@/components/ui/section";
 
@@ -8,51 +7,40 @@ export function FinalCta() {
     <section
       id="get-started"
       aria-labelledby="get-started-title"
-      className="on-dark relative overflow-hidden bg-charcoal"
+      className="relative overflow-hidden bg-[#14332f]"
     >
-      <div aria-hidden="true" className="ambient-dark absolute inset-0" />
-
+      <img
+        src="/gallery/wash.jpg"
+        alt=""
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40"
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-[#102824]/78" />
       <Container className="relative">
-        <div className="py-24 text-center sm:py-32">
+        <div className="py-20 text-center sm:py-28">
           <Reveal>
-            <div className="mb-6 flex flex-wrap items-center justify-center gap-2">
-              <span className="text-xs font-medium text-white/50">
-                Sales · Support · Inquiries
-              </span>
-              <ChannelChip channel="whatsapp" tone="onDark" />
-              <ChannelChip channel="sms" tone="onDark" />
-              <ChannelChip channel="voice" tone="onDark" />
-              <ChannelChip channel="telegram" tone="onDark" />
-            </div>
-
             <h2
               id="get-started-title"
-              className="text-balance-tight mx-auto max-w-3xl text-[2rem] font-semibold leading-[1.1] tracking-[-0.03em] text-white sm:text-[2.75rem] lg:text-[3.25rem]"
+              className="title mx-auto max-w-3xl text-[2rem] text-white sm:text-5xl"
             >
               Ready to run sales and support from one contact center?
             </h2>
-            <p className="text-pretty-body mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/70">
-              Join the modern Cloud Contact Center for sales and support teams.
-            </p>
-
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <ButtonLink href="#get-started" size="lg" className="w-full sm:w-auto">
+            <p className="mt-4 text-lg text-white/75">Early access is open.</p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <ButtonLink href="/get-started" size="lg" className="w-full sm:w-auto">
                 Get started free
                 <ArrowRight />
               </ButtonLink>
               <ButtonLink
-                href="#get-started"
+                href="/get-started?intent=sales"
                 variant="onDarkGhost"
                 size="lg"
                 className="w-full sm:w-auto"
               >
-                Book a quick demo with the team
+                Talk to sales
               </ButtonLink>
             </div>
-
-            <p className="mt-6 text-sm text-white/45">
-              No credit card required · Transparent prepaid pricing · Live in
-              under 12 minutes
+            <p className="mt-5 text-sm text-white/60">
+              No credit card · Free inbox · Live in under 12 minutes
             </p>
           </Reveal>
         </div>
