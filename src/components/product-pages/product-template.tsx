@@ -115,11 +115,9 @@ export function ProductTemplate({ product }: { product: Product }) {
             ))}
           </ol>
           <p className="mt-8 text-sm text-muted">
-            Starter is free. A paid plan is a platform fee, then airtime.{" "}
             <Link href="/pricing" className="font-medium text-brand">
-              See indicative rates
+              See pricing
             </Link>
-            .
           </p>
         </Container>
       </section>

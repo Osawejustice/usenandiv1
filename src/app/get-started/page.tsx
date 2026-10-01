@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
 import { StartForm } from "@/components/sections/start-form";
 import { Container } from "@/components/ui/section";
-import {
-  billingFromQuery,
-  planAmount,
-  planCadence,
-  planFromQuery,
-  plans,
-} from "@/content/pricing";
+import { billingFromQuery, planFromQuery } from "@/content/pricing";
 
 export const metadata: Metadata = {
   title: "Get started",
   description:
-    "Tell Nandi who you are. Get started free, or talk to sales about Enterprise. We reply from hello@usenandi.co.",
+    "Tell us about the floor, or open the shared inbox. We reply from hello@usenandi.co.",
   alternates: { canonical: "https://nandi.to/get-started" },
 };
 
@@ -26,7 +20,6 @@ export default async function GetStartedPage({
   const plan = planFromQuery(params.plan, intent === "sales" ? "enterprise" : "starter");
   const billing = billingFromQuery(params.billing);
   const sales = intent === "sales";
-  const chosen = plans.find((entry) => entry.id === plan) ?? plans[0];
 
   return (
     <main id="main" className="paper pb-20 pt-28 sm:pt-32">
@@ -41,11 +34,8 @@ export default async function GetStartedPage({
             </h1>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-muted">
               {sales
-                ? "Send a note and a person replies from hello@usenandi.co. Enterprise is priced with you. Starter is free. Growth and SME keep the published platform fee, and airtime is separate."
-                : "Open the inbox free, or ask for a number. We reply from hello@usenandi.co. No card on this page."}
-            </p>
-            <p className="mt-4 text-sm text-faint">
-              Selected: {chosen.name}, {planAmount(chosen, billing)}, {planCadence(chosen.id, billing)}. You can change it in the form.
+                ? "Tell us the queues, the hours, and how customers reach you. We reply from hello@usenandi.co."
+                : "Open the shared inbox. Add a number when the team is ready for voice. We reply from hello@usenandi.co."}
             </p>
           </div>
           <StartForm intent={intent} plan={plan} billing={billing} />

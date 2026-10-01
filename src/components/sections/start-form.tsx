@@ -96,9 +96,9 @@ export function StartForm({
         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand">
           Ready to send
         </p>
-        <h2 className="title mt-3 text-3xl text-ink">Your note is addressed to hello@usenandi.co.</h2>
+        <h2 className="title mt-3 text-3xl text-ink">Send it from your mail app.</h2>
         <p className="mt-4 text-base leading-relaxed text-muted">
-          Your mail app should be open with the details filled in. Send that message and we reply from the same address. This page does not keep a copy.
+          The note is addressed to hello@usenandi.co. We reply from that address.
         </p>
         <a
           href={mailto}
@@ -267,7 +267,7 @@ export function StartForm({
       >
         {talking ? "Talk to sales" : fields.plan === "starter" ? "Get started free" : "Get started"}
       </button>
-      <p className="mt-3 text-sm text-faint">No card on this form. We reply from hello@usenandi.co.</p>
+      <p className="mt-3 text-sm text-faint">No card. We reply from hello@usenandi.co.</p>
     </form>
   );
 }

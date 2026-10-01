@@ -21,7 +21,7 @@ export default function PricingPage() {
             Start free. Pay when you need a number.
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">
-            On Starter you connect WhatsApp and Telegram. They are free services, as long as you are online, and Nandi does not charge for them. A business number is a monthly fee for the workspace. Calls and SMS are airtime, on their own. If the workspace is not for you, the platform fee is refunded. Airtime already used stays spent. The figures are indicative until the dashboard shows the cost before a call or a message.
+            Starter is the shared inbox. Connect WhatsApp and Telegram while you are online. Nandi does not charge for them. A business number is a platform fee. Calls and SMS are airtime. Leave, and the platform fee is refunded. Airtime already used stays spent. The figures are indicative.
           </p>
         </Container>
       </div>

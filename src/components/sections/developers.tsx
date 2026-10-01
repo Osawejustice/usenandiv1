@@ -124,7 +124,7 @@ export function Developers() {
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row">
                 <ButtonLink href="/get-started?intent=sales&plan=enterprise" size="lg">
-                  Get API keys
+                  Talk to sales
                   <ArrowRight />
                 </ButtonLink>
                 <ButtonLink href="/pricing" variant="onDarkGhost" size="lg">
